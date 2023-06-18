@@ -1,6 +1,6 @@
 
 
-function Card(){
+function Card(props){
 	return (
     <div className="card">
       <button className="addFavourites">
@@ -17,15 +17,12 @@ function Card(){
           />
         </svg>
       </button>
-      <img
-        src="./img/sneakers/card-sniakers-1.jpg"
-        alt="Изображение кроссовок"
-      />
-      <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
+      <img src={props.imageUrl} alt="Изображение кроссовок" />
+      <p>{props.title}</p>
       <div className="wrapSumm">
         <div className="wrapSummLeft">
           <span className="cardSumm">Цена:</span>
-          <span className="cardSummNumber">12 999 руб.</span>
+          <span className="cardSummNumber">{props.price}</span>
         </div>
         <button className="addBasket">
           <svg
