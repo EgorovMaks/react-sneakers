@@ -1,6 +1,9 @@
 
 
 function Card(props){
+  const btnClickAdd = (e) => {
+    alert(123)
+  }
 	return (
     <div className="card">
       <button className="addFavourites">
@@ -24,7 +27,7 @@ function Card(props){
           <span className="cardSumm">Цена:</span>
           <span className="cardSummNumber">{props.price}</span>
         </div>
-        <button className="addBasket">
+        <button className="addBasket" onClick={btnClickAdd}>
           <svg
             width="12"
             height="12"

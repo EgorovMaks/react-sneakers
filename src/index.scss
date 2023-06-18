@@ -176,36 +176,10 @@ header {
       color: #000000;
       max-width: 110px;
     }
-    .addBasket {
-      width: 32px;
-      height: 32px;
-      align-self: center;
-      background: #ffffff;
-      border: 1px solid #f2f2f2;
-      border-radius: 8px;
-      display: grid;
-      transition: border 0.3s ease;
-      svg {
-        align-self: center;
-        justify-self: center;
-        transform: scale(1);
-        transition: transform 0.3s ease;
-        path {
-          transition: fill 0.3s ease;
-        }
-      }
-    }
-    .addBasket:hover {
-      border: 1px solid #3cc755;
-      svg {
-        transform: scale(1.4);
-        path {
-          fill: #3cc755;
-        }
-      }
-    }
   }
 }
+
+
 .sneakers {
   display: grid;
   justify-content: space-between;
@@ -262,7 +236,7 @@ header {
     opacity: 0;
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s ease;
-    .titleBox{
+    .titleBox {
       display: flex;
       justify-content: space-between;
     }
@@ -350,10 +324,12 @@ header {
   border-radius: 8px;
   transition: border 0.3s ease-in-out;
   svg {
-    align-self: center;
-    justify-self: center;
-    transform: rotate(45deg) scale(1);
-    transition: transform 0.3s ease-in-out;
+    &:nth-child(1) {
+      align-self: center;
+      justify-self: center;
+      transform: rotate(45deg) scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
     path {
       transition: fill 0.3s ease-in-out;
     }
@@ -361,13 +337,16 @@ header {
   &:hover {
     border: 1px solid #ff8585;
     svg {
-      transform: rotate(45deg) scale(1.4);
-      path {
-        fill: #ff8585;
+      &:nth-child(1) {
+        transform: rotate(45deg) scale(1.4);
+        path {
+          fill: #ff8585;
+        }
       }
     }
   }
 }
+
 
 
 .GreenButton {
@@ -393,6 +372,35 @@ header {
     background: #8ec052;
     span {
       right: 25px;
+    }
+  }
+}
+
+.addBasket {
+  width: 32px;
+  height: 32px;
+  align-self: center;
+  background: #ffffff;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  display: grid;
+  transition: border 0.3s ease;
+  svg {
+    align-self: center;
+    justify-self: center;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    path {
+      transition: fill 0.3s ease;
+    }
+  }
+}
+.addBasket:hover {
+  border: 1px solid #3cc755;
+  svg {
+    transform: scale(1.4);
+    path {
+      fill: #3cc755;
     }
   }
 }
