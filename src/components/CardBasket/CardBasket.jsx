@@ -1,6 +1,5 @@
 import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
 import style from './cardBasket.module.scss';
-console.log(style)
 function CardBasket() {
   return (
     <div className={style.cardBasket}>
