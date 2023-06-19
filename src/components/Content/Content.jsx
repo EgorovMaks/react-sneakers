@@ -30,22 +30,7 @@ const arr = [
 ];
 
 function Content(props) {
-  const [isAdd, setIsAdd] = React.useState(false);
 
-
-  const btnClickPlus = () => {
-    setIsAdd(true);
-  };
-
-
-  console.log(isAdd)
-
-
-
-
-  const btnClickFavorite = () => {
-    console.log(321)
-  };
   const inp =(e) => {
     document.querySelector("#contenInput").focus();
   } 
@@ -78,9 +63,6 @@ function Content(props) {
             price={obj.price}
             imageUrl={obj.imageUrl}
             key={obj.key}
-            onClickPlus={btnClickPlus}
-            onClickFavorite={btnClickFavorite}
-            isAdd={isAdd}
           />
         ))}
       </div>

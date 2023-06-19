@@ -1,4 +1,16 @@
 .addBasket {
+  &:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    }
+  position: relative;
   width: 32px;
   height: 32px;
   align-self: center;
@@ -6,23 +18,26 @@
   border: 1px solid #f2f2f2;
   border-radius: 8px;
   display: grid;
-  transition: border 0.3s ease;
+  transition: border 0.4s ease, transform 0.3s ease;
   grid-template-columns: 100% 100%;
   grid-template-rows: 100% 100%;
   overflow: hidden;
+  
   svg {
+    position: relative;
     align-self: center;
     justify-self: center;
     transform: scale(1);
-    transition: transform 0.3s ease;
-    
+    transition: transform 0.4s ease;
+    z-index: 2;
+
     path {
       transition: fill 0.3s ease;
     }
   }
   &:hover {
     border: 1px solid #3cc755;
-    svg:nth-child(1){
+    svg:nth-child(1) {
       transform: scale(1.4);
       path {
         fill: #3cc755;
@@ -31,6 +46,25 @@
   }
 }
 
-.addBasketAdd{
-  display: block;
+.addBasketAdd {
+  cursor: auto;
+  &:after{
+    opacity: 1;
+  }
+  svg:nth-child(1) {
+    transform: translateX(-200%);
+  }
+  &:hover {
+    
+    border: 1px solid #ffffff;
+    svg:nth-child(1) {
+      transform: translateX(-200%);
+    }
+    svg:nth-child(2){
+    }
+  }
+  svg:nth-child(2){
+    z-index: 2;
+    transform: translateX(-248%);
+  }
 }
