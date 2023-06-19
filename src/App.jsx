@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import Drawer from "./components/Drawer";
-import Content from "./pieces/Content";
+import Header from "./components/Header/Header";
+import Drawer from "./components/Drawer/Drawer";
+import Content from "./components/Content/Content";
 
 
 

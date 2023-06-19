@@ -1,0 +1,26 @@
+.GreenButton {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background: #9dd558;
+  border: none;
+  border-radius: 18px;
+  color: #fff;
+  text-align: center;
+  transition: background 0.2s ease-in-out;
+  span {
+    position: absolute;
+    right: 33px;
+    top: 50%;
+    transform: translateY(-42%);
+    transition: right 0.3s ease-in-out;
+  }
+  &:hover {
+    background: #8ec052;
+    span {
+      right: 25px;
+    }
+  }
+}

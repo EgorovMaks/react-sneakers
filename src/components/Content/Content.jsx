@@ -1,4 +1,5 @@
-import Card from "../components/Card";
+import Card from "../Card/Card";
+import style from './content.module.scss';
 
 const arr = [
   {
@@ -29,10 +30,10 @@ const arr = [
 
 function Content(props) {
   return (
-    <section className="content">
-      <div className="sneakersTop">
+    <section className={style.content}>
+      <div className={style.sneakersTop}>
         <h1>Все кросcовки</h1>
-        <div className="search-box">
+        <div className={style.searchBox}>
           <svg
             width="16"
             height="16"
@@ -50,7 +51,7 @@ function Content(props) {
           <input placeholder="Поиск..." type="text" />
         </div>
       </div>
-      <div className="sneakers">
+      <div className={style.sneakers}>
         {arr.map((obj) => (
           <Card
             title={obj.title}

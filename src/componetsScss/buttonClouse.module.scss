@@ -1,0 +1,31 @@
+.buttonClouse {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  transition: border 0.3s ease-in-out;
+  svg {
+    &:nth-child(1) {
+      align-self: center;
+      justify-self: center;
+      transform: rotate(45deg) scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
+    path {
+      transition: fill 0.3s ease-in-out;
+    }
+  }
+  &:hover {
+    border: 1px solid #ff8585;
+    svg {
+      &:nth-child(1) {
+        transform: rotate(45deg) scale(1.4);
+        path {
+          fill: #ff8585;
+        }
+      }
+    }
+  }
+}

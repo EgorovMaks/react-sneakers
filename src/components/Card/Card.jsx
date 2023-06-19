@@ -1,12 +1,13 @@
-
+import styles from './card.module.scss';
+import stylesBtnAdd from '../../componetsScss/addBasket.module.scss'
 
 function Card(props){
   const btnClickAdd = (e) => {
     alert(123)
   }
 	return (
-    <div className="card">
-      <button className="addFavourites">
+    <div className={styles.card}>
+      <button className={styles.addFavourites}>
         <svg
           width="22"
           height="19"
@@ -22,12 +23,12 @@ function Card(props){
       </button>
       <img src={props.imageUrl} alt="Изображение кроссовок" />
       <p>{props.title}</p>
-      <div className="wrapSumm">
-        <div className="wrapSummLeft">
-          <span className="cardSumm">Цена:</span>
-          <span className="cardSummNumber">{props.price}</span>
+      <div className={styles.wrapSumm}>
+        <div>
+          <span className={styles.cardSumm}>Цена:</span>
+          <span className={styles.cardSummNumber}>{props.price} руб.</span>
         </div>
-        <button className="addBasket" onClick={btnClickAdd}>
+        <button className={stylesBtnAdd.addBasket} onClick={btnClickAdd}>
           <svg
             width="12"
             height="12"
