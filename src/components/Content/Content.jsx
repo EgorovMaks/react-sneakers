@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "../Card/Card";
 import style from './content.module.scss';
 
@@ -29,11 +30,30 @@ const arr = [
 ];
 
 function Content(props) {
+  const [isAdd, setIsAdd] = React.useState(false);
+
+
+  const btnClickPlus = () => {
+    setIsAdd(true);
+  };
+
+
+  console.log(isAdd)
+
+
+
+
+  const btnClickFavorite = () => {
+    console.log(321)
+  };
+  const inp =(e) => {
+    document.querySelector("#contenInput").focus();
+  } 
   return (
     <section className={style.content}>
       <div className={style.sneakersTop}>
         <h1>Все кросcовки</h1>
-        <div className={style.searchBox}>
+        <div className={style.searchBox} onClick={inp}>
           <svg
             width={16}
             height={16}
@@ -48,7 +68,7 @@ function Content(props) {
               strokeLinecap="round"
             />
           </svg>
-          <input placeholder="Поиск..." type="text" />
+          <input id="contenInput" placeholder="Поиск..." type="text" />
         </div>
       </div>
       <div className={style.sneakers}>
@@ -58,6 +78,9 @@ function Content(props) {
             price={obj.price}
             imageUrl={obj.imageUrl}
             key={obj.key}
+            onClickPlus={btnClickPlus}
+            onClickFavorite={btnClickFavorite}
+            isAdd={isAdd}
           />
         ))}
       </div>
