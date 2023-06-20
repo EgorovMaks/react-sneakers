@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./card.module.scss";
 import stylesBtnAdd from "../../componetsScss/addBasket.module.scss";
-console.log(styles);
 
-function Card(props) {
+function Card({ imageUrl, title, price, onPlus}) {
   const [isLiked, setIsLiked] = React.useState(false);
   const [isAdd, setIsAdd] = React.useState(false);
 
   const btnClickPlus = () => {
+    if (isLiked === false) {
+      btnClickFavorite();
+    }
     setIsAdd(true);
+    onPlus({title, imageUrl, price})
   };
 
   const btnClickFavorite = () => {
@@ -53,12 +56,12 @@ function Card(props) {
           </svg>
         )}
       </button>
-      <img src={props.imageUrl} alt="Изображение кроссовок" />
-      <p>{props.title}</p>
+      <img src={imageUrl} alt="Изображение кроссовок" />
+      <p>{title}</p>
       <div className={styles.wrapSumm}>
         <div>
           <span className={styles.cardSumm}>Цена:</span>
-          <span className={styles.cardSummNumber}>{props.price} руб.</span>
+          <span className={styles.cardSummNumber}>{price} руб.</span>
         </div>
         <button
           className={

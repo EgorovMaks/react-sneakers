@@ -1,15 +1,15 @@
 import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
 import style from './cardBasket.module.scss';
-function CardBasket() {
+function CardBasket(props) {
   return (
     <div className={style.cardBasket}>
-      <img src="./img/sneakers/card-sniakers-1.jpg" alt="Кроссовки" />
+      <img src={props.image} alt="Кроссовки" />
       <div>
         <span className={style.cardBasketName}>
-          Мужские Кроссовки Nike Air Max 270
+          {props.title}
         </span>
         <span>
-          <b>12 999 руб.</b>
+          <b>{props.price} руб.</b>
         </span>
       </div>
       <button className={styleBtnClouse.buttonClouse}>

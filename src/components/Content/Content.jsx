@@ -1,39 +1,29 @@
 import React from "react";
 import Card from "../Card/Card";
-import style from './content.module.scss';
+import style from "./content.module.scss";
 
-const arr = [
-  {
-    title: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 12900,
-    imageUrl: "./img/sneakers/card-sniakers-1.jpg",
-    key: 1,
-  },
-  {
-    title: "Мужские Кроссовки Nike Air Max 270",
-    price: 15600,
-    imageUrl: "./img/sneakers/card-sniakers-2.jpg",
-    key: 2,
-  },
-  {
-    title: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 8499,
-    imageUrl: "./img/sneakers/card-sniakers-3.jpg",
-    key: 3,
-  },
-  {
-    title: "Кроссовки Puma X Aka Boku Future Rider",
-    price: 8999,
-    imageUrl: "./img/sneakers/card-sniakers-4.jpg",
-    key: 4,
-  },
-];
+
 
 function Content(props) {
+  const [items, setItems] = React.useState([]);
 
-  const inp =(e) => {
+  React.useEffect(() => {
+    fetch("https://6491516f2f2c7ee6c2c8015d.mockapi.io/items")
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      setItems(json);
+    });
+  }, []);
+
+  const btnPlus = (obj) =>{
+    props.onPlus(obj)
+  };
+
+  const inp = (e) => {
     document.querySelector("#contenInput").focus();
-  } 
+  };
   return (
     <section className={style.content}>
       <div className={style.sneakersTop}>
@@ -57,17 +47,18 @@ function Content(props) {
         </div>
       </div>
       <div className={style.sneakers}>
-        {arr.map((obj) => (
+        {items.map((obj) => (
           <Card
             title={obj.title}
             price={obj.price}
             imageUrl={obj.imageUrl}
             key={obj.key}
+            onPlus={btnPlus}
           />
         ))}
       </div>
     </section>
   );
-};
+}
 
-export default Content
+export default Content;

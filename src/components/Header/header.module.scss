@@ -25,8 +25,28 @@ header {
       display: flex;
       align-items: center;
     }
+    button{
+      border: none;
+      background: none;
+      display: flex;
+      align-items: center;
+      color: #000;
+      cursor: pointer;
+      &:hover{
+        svg{
+          transform: scale(1.2);
+          path{
+            stroke: #3cc755;
+          }
+        }
+      }
+    }
     svg {
       margin-right: 10px;
+      transition: transform .3s ease-in-out;
+      path{
+        transition: stroke .6s ease-in-out;
+      }
     }
   }
 }

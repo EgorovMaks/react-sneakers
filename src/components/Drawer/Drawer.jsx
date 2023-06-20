@@ -3,13 +3,20 @@ import style from "./drawer.module.scss";
 import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
 import styleBtnGreen from '../../componetsScss/greenButton.module.scss'
 
-function Drawer() {
+function Drawer(props) {
   return (
-    <section className={style.drawer}>
+    <section
+      className={
+        props.basketOpen ? `${style.drawer} ${style.drawerOpen}` : style.drawer
+      }
+    >
       <div className={style.drawerBox}>
         <div className={style.titleBox}>
           <h2>Корзина</h2>
-          <button className={styleBtnClouse.buttonClouse}>
+          <button
+            onClick={props.basketClouse}
+            className={styleBtnClouse.buttonClouse}
+          >
             <svg
               width={12}
               height={12}
@@ -25,8 +32,14 @@ function Drawer() {
           </button>
         </div>
         <div className={style.cardsBox}>
-          <CardBasket />
-          <CardBasket />
+          {props.cardBasket.map((obj) => (
+            <CardBasket
+              image={obj.imageUrl}
+              title={obj.title}
+              price={obj.price}
+              key={obj.key}
+            />
+          ))}
         </div>
 
         <div className={style.wrapBottom}>
