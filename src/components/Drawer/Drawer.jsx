@@ -1,20 +1,25 @@
 import CardBasket from "../CardBasket/CardBasket";
 import style from "./drawer.module.scss";
 import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
-import styleBtnGreen from '../../componetsScss/greenButton.module.scss'
+import styleBtnGreen from "../../componetsScss/greenButton.module.scss";
+import React from "react";
 
-function Drawer(props) {
+function Drawer({ basketOpen, cardBasket, basketClouse, cardDel }) {
+  const delCard = (obj) => {
+    cardDel(obj);
+  };
+
   return (
     <section
       className={
-        props.basketOpen ? `${style.drawer} ${style.drawerOpen}` : style.drawer
+        basketOpen ? `${style.drawer} ${style.drawerOpen}` : style.drawer
       }
     >
       <div className={style.drawerBox}>
         <div className={style.titleBox}>
           <h2>Корзина</h2>
           <button
-            onClick={props.basketClouse}
+            onClick={basketClouse}
             className={styleBtnClouse.buttonClouse}
           >
             <svg
@@ -31,56 +36,65 @@ function Drawer(props) {
             </svg>
           </button>
         </div>
-        <div className={style.cardsBox}>
-          {props.cardBasket.map((obj) => (
-            <CardBasket
-              image={obj.imageUrl}
-              title={obj.title}
-              price={obj.price}
-              key={obj.key}
-            />
-          ))}
-        </div>
-
-        <div className={style.wrapBottom}>
-          <div className={style.summWrap}>
-            <span>Итого:</span>
-            <span className={style.border}></span>
-            <b>21 498 руб.</b>
+        {cardBasket.length > 0 ? (
+          <div className={style.cardsBox}>
+            {cardBasket.map((obj) => (
+              <CardBasket
+                imageUrl={obj.imageUrl}
+                title={obj.title}
+                price={obj.price}
+                id={obj.id}
+                key={obj.imageUrl}
+                delInfo={delCard}
+              />
+            ))}
           </div>
-          <div className={style.summWrap}>
-            <span>Налог 5%:</span>
-            <span className={style.border}></span>
-            <b>1074 руб.</b>
+        ) : (
+          <h2>Пуста</h2>
+        )}
+        {cardBasket.length > 0 ? (
+          <div className={style.wrapBottom}>
+            <div className={style.summWrap}>
+              <span>Итого:</span>
+              <span className={style.border}></span>
+              <b>21 498 руб.</b>
+            </div>
+            <div className={style.summWrap}>
+              <span>Налог 5%:</span>
+              <span className={style.border}></span>
+              <b>1074 руб.</b>
+            </div>
+            <button className={styleBtnGreen.GreenButton}>
+              Оформить зкаказ
+              <span>
+                <svg
+                  width={16}
+                  height={14}
+                  viewBox="0 0 16 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 7H14.7143"
+                    stroke="white"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8.71436 1L14.7144 7L8.71436 13"
+                    stroke="white"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
           </div>
-          <button className={styleBtnGreen.GreenButton}>
-            Оформить зкаказ
-            <span>
-              <svg
-                width={16}
-                height={14}
-                viewBox="0 0 16 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 7H14.7143"
-                  stroke="white"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.71436 1L14.7144 7L8.71436 13"
-                  stroke="white"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </section>
   );

@@ -1,18 +1,30 @@
 import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
 import style from './cardBasket.module.scss';
-function CardBasket(props) {
+
+
+
+function CardBasket({title, imageUrl, price, delInfo, id}) {
+
+  const cardDelBusket = () =>{
+    delInfo({imageUrl, price, title, id})
+    
+  }
+
+
+
   return (
     <div className={style.cardBasket}>
-      <img src={props.image} alt="Кроссовки" />
+      <img
+        src={`./img/sneakers/card-sniakers-${imageUrl}.jpg`}
+        alt="Кроссовки"
+      />
       <div>
-        <span className={style.cardBasketName}>
-          {props.title}
-        </span>
+        <span className={style.cardBasketName}>{title}</span>
         <span>
-          <b>{props.price} руб.</b>
+          <b>{price} руб.</b>
         </span>
       </div>
-      <button className={styleBtnClouse.buttonClouse}>
+      <button onClick={cardDelBusket} className={styleBtnClouse.buttonClouse}>
         <svg
           width="12"
           height="12"
