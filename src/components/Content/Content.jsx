@@ -12,6 +12,7 @@ function Content(props) {
       setItems(res.data);
     });
   }, []);
+  
 
 
   const btnPlus = (obj) => {
@@ -73,6 +74,7 @@ function Content(props) {
           )
           .map((obj) => (
             <Card
+            isFavorite={props.isFavorite}
               filterBuscet={props.filterBuscet}
               onPlusFavorite={onPlusFavorite}
               id={obj.id}

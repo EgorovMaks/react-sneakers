@@ -4,6 +4,7 @@ import Content from "./components/Content/Content";
 import React from "react";
 import axios from "axios";
 import Favorite from "./components/Favorite/Favorite";
+import { Route, Routes } from "react-router-dom";
 
 function App(props) {
   const [basketOpen, setBasketOpen] = React.useState(false);
@@ -93,8 +94,17 @@ function App(props) {
         basketClouse={bodyOvf}
       />
       {onFavorite ? null : (
-        <Content filterBuscet={cardBasket} onPlus={onPlusBasket} onPlusFavorite={onPlusFavorites} />
+        <Content
+          filterBuscet={cardBasket}
+          onPlus={onPlusBasket}
+          onPlusFavorite={onPlusFavorites}
+          isFavorite={onPlusFavorite}
+        />
       )}
+
+        <Routes>
+          <Route path="/favorits" element={<h3>fgadsfsdfdsf</h3>}/>
+        </Routes>
 
       {onFavorite ? (
         <Favorite
