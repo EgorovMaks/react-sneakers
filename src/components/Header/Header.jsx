@@ -1,11 +1,7 @@
 import style from "./header.module.scss";
 
 function Header({onClickBasket, onFavoriteClick}) {
-  const basket = () => {
-    console.log(2);
-  };
-
-  // console.log(onFavoriteClick)
+  
 
   return (
     <header>

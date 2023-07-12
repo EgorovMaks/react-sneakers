@@ -19,10 +19,18 @@ function Card({
   const [isAdd, setIsAdd] = React.useState(false);
   const [isActivButton, setIsActiveButton] = React.useState(false);
 
-  console.log(filterBuscet)
+  // console.log(filterBuscet)
 
+  // const favoriteOn = () => {
+  //   // console.log(id)
+  //   if (filterBuscet.find((i) => (i.imageUrl === imageUrl) === true)) {
+  //     console.log(imageUrl);
+  //     setIsActiveButton(true);
+  //   }
+  // };
 
-  
+  // favoriteOn()
+
 
   const btnClickPlus = () => {
     if (isLiked === false) {

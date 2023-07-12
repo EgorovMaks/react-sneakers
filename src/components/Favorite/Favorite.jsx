@@ -11,7 +11,7 @@ function Favorite({ onPlusFavorites, onPlusBasket, onDelFavorite }) {
 
   return (
     <section className={style.favoriteWrap}>
-      <h2 className={style.favoriteTitle}>Избранное</h2>
+      <h2 className={style.favoriteTitle}>Мои закладки</h2>
       <div className={style.favorite}>
         {onPlusFavorites.map((obj) => (
           <Card
