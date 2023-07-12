@@ -12,10 +12,17 @@ function Card({
   onPlusFavorite,
   setFavoriteButton,
   favoriteButton,
-  onDelFavorite
+  onDelFavorite,
+  filterBuscet,
 }) {
   const [isLiked, setIsLiked] = React.useState(false);
   const [isAdd, setIsAdd] = React.useState(false);
+  const [isActivButton, setIsActiveButton] = React.useState(false);
+
+  console.log(filterBuscet)
+
+
+  
 
   const btnClickPlus = () => {
     if (isLiked === false) {
@@ -30,12 +37,9 @@ function Card({
       setIsLiked(!isLiked);
       onPlusFavorite({ title, imageUrl, price, id });
     } else {
-      onDelFavorite({id, imageUrl})
+      onDelFavorite({ id, imageUrl });
     }
   };
-
-  
-
 
   return (
     <div className={styles.card}>

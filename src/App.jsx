@@ -69,7 +69,6 @@ function App(props) {
   };
 
   const onDelFavorite = (obj) => {
-
     delPlus(obj);
     setTimeout(() => {
       axios.delete(`https://19bd238effe8a2ff.mokky.ru/favorite/${obj.id}`);
@@ -80,6 +79,8 @@ function App(props) {
       });
     });
   };
+
+  
 
   return (
     <div className="wrap">
@@ -92,7 +93,7 @@ function App(props) {
         basketClouse={bodyOvf}
       />
       {onFavorite ? null : (
-        <Content onPlus={onPlusBasket} onPlusFavorite={onPlusFavorites} />
+        <Content filterBuscet={cardBasket} onPlus={onPlusBasket} onPlusFavorite={onPlusFavorites} />
       )}
 
       {onFavorite ? (
