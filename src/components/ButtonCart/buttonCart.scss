@@ -1,0 +1,78 @@
+.buttonCart {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #f2f2f2;
+  background: transparent;
+  border-radius: 8px;
+  transition: border 0.3s ease-in-out, background 0.3s;
+  overflow: hidden;
+  svg {
+    &:first-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -51%);
+      transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+      path {
+        display: block;
+        width: 32px;
+        height: 32px;
+        transition: fill 0.3s ease-in-out;
+      }
+    }
+    &:last-child {
+      position: absolute;
+      top: 50%;
+      left: -50%;
+      transform: translate(-50%, -51%);
+      transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #3cc755;
+    background: #d5ffdb;
+    svg {
+      &:first-child {
+        path {
+          fill: #3cc755;
+        }
+      }
+      transform: translate(-50%, -52%) scale(1.5);
+    }
+  }
+}
+
+.buttonCartActive {
+  background: linear-gradient(180deg, #89f09c 0%, #3cc755 100%);
+  cursor: auto;
+  &:hover {
+    background: linear-gradient(180deg, #89f09c 0%, #3cc755 100%);
+  }
+  svg {
+    &:first-child {
+      left: -50%;
+      &:hover{
+        transform: translate(-50%, -52%)
+      }
+    }
+    &:last-child {
+      left: 50%;
+      &:hover{
+        transform: translate(-50%, -52%)
+      }
+    }
+  }
+  &:hover {
+    border: 1px solid #fff;
+    svg {
+      &:first-child {
+        path {
+          fill: #3cc755;
+        }
+      }
+      transform: translate(-50%, -52%);
+    }
+  }
+}

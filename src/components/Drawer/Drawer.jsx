@@ -1,99 +1,50 @@
+import DrawerSumm from "../DrawerSumm/DrawerSumm";
 import CardBasket from "../CardBasket/CardBasket";
-import style from "./drawer.module.scss";
-import styleBtnClouse from "../../componetsScss/buttonClouse.module.scss";
-import styleBtnGreen from "../../componetsScss/greenButton.module.scss";
+import "./drawer.scss";
+
 import React from "react";
 
-function Drawer({ basketOpen, cardBasket, basketClouse, cardDel }) {
-  const delCard = (obj) => {
+function Drawer({ cartOn, setCartOn, getCart, cardDel }) {
+  const delCartCart = (obj) => {
     cardDel(obj);
   };
 
+  const buildCardsCart = () => {
+    return getCart.map((obj) => (
+      <CardBasket
+        delCartCart={delCartCart}
+        id={obj.id}
+        key={obj.imageUrl}
+        imageUrl={obj.imageUrl}
+        title={obj.title}
+        price={obj.price}
+      />
+    ));
+  };
+
+  const clouseCart = () => {
+    document.querySelector("body").classList.toggle("ovf");
+    setCartOn(!cartOn);
+  };
+
   return (
-    <section
-      className={
-        basketOpen ? `${style.drawer} ${style.drawerOpen}` : style.drawer
-      }
-    >
-      <div className={style.drawerBox}>
-        <div className={style.titleBox}>
-          <h2>Корзина</h2>
-          <button
-            onClick={basketClouse}
-            className={styleBtnClouse.buttonClouse}
-          >
-            <svg
-              width={12}
-              height={12}
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z"
-                fill="#D3D3D3"
-              />
-            </svg>
-          </button>
+    <section className="drawer drawerActive">
+      <div className="drawerCart">
+        <div className="drawerTitle">
+          <p className="title">Корзина</p>
+          <button className="cartClouse" onClick={clouseCart}></button>
         </div>
-        {cardBasket.length > 0 ? (
-          <div className={style.cardsBox}>
-            {cardBasket.map((obj) => (
-              <CardBasket
-                imageUrl={obj.imageUrl}
-                title={obj.title}
-                price={obj.price}
-                id={obj.id}
-                key={obj.imageUrl}
-                delInfo={delCard}
-              />
-            ))}
-          </div>
+
+        {getCart.length > 0 ? (
+          <>
+            <div className="drawerCardWrap">{buildCardsCart()}</div>
+            <DrawerSumm />
+          </>
         ) : (
-          <h2>Пуста</h2>
-        )}
-        {cardBasket.length > 0 ? (
-          <div className={style.wrapBottom}>
-            <div className={style.summWrap}>
-              <span>Итого:</span>
-              <span className={style.border}></span>
-              <b>21 498 руб.</b>
-            </div>
-            <div className={style.summWrap}>
-              <span>Налог 5%:</span>
-              <span className={style.border}></span>
-              <b>1074 руб.</b>
-            </div>
-            <button className={styleBtnGreen.GreenButton}>
-              Оформить зкаказ
-              <span>
-                <svg
-                  width={16}
-                  height={14}
-                  viewBox="0 0 16 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 7H14.7143"
-                    stroke="white"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8.71436 1L14.7144 7L8.71436 13"
-                    stroke="white"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        ) : (
+          <>
+          <h2>Ваша корзина пуста</h2>
           <div></div>
+          </>
         )}
       </div>
     </section>

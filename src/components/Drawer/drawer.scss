@@ -1,0 +1,98 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  transform: translateX(-1000%);
+  transition: transform 0.3s ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #000;
+  }
+
+  .drawerCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 30px;
+    width: 385px;
+    height: 100vh;
+    background: #fff;
+    opacity: 1;
+    z-index: 3;
+  }
+
+  .drawerTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .cartClouse {
+    position: relative;
+    background: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    &:hover {
+      &::before {
+        background: #3cc755;
+      }
+      &::after {
+        background: #3cc755;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: #000;
+      width: 100%;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      transform: rotate(45deg);
+      transition: background 0.3s ease-in-out;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: #000;
+      width: 100%;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      transform: rotate(-45deg);
+      transition: background 0.3s ease-in-out;
+    }
+  }
+  .drawerCardWrap {
+    border-radius: 20px;
+    border: 1px solid #f3f3f3;
+    background: #fff;
+    height: 100%;
+    padding: 5px;
+    padding-top: 10px;
+    overflow: auto;
+  }
+}
+
+.drawerActive {
+  transform: translateX(0);
+}

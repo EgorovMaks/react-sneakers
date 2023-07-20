@@ -1,118 +1,141 @@
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
-import Drawer from "./components/Drawer/Drawer";
 import Content from "./components/Content/Content";
-import React from "react";
 import axios from "axios";
+import Drawer from "./components/Drawer/Drawer";
 import Favorite from "./components/Favorite/Favorite";
-import { Route, Routes } from "react-router-dom";
 
 function App(props) {
-  const [basketOpen, setBasketOpen] = React.useState(false);
-  const [cardBasket, setCardBasket] = React.useState([]);
-  const [onFavorite, setOnFavorite] = React.useState(false);
-  const [onPlusFavorite, setOnPlusFavorite] = React.useState([]);
-  const bodyOvf = () => {
-    setBasketOpen(false);
-    document.querySelector("body").classList.remove("ovf");
-  };
+  const [getItems, setGetItems] = useState([]);
+  const [getCart, setGetCart] = useState([]);
+  const [getFavorite, setGetFavorite] = useState([]);
+  const [cartOn, setCartOn] = useState(false);
+  const [buttonPlusActive, setButtonPlusActive] = useState(false);
+  const [favoriteOn, setFavoriteOn] = useState(false);
+  const [priceCart, setPriceCart] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    axios.get("https://19bd238effe8a2ff.mokky.ru/items").then((res) => {
+      setGetItems(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
     axios.get("https://19bd238effe8a2ff.mokky.ru/carts").then((res) => {
-      setCardBasket(res.data);
+      setGetCart(res.data);
     });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get("https://19bd238effe8a2ff.mokky.ru/favorite").then((res) => {
-      setOnPlusFavorite(res.data);
+      setGetFavorite(res.data);
     });
   }, []);
 
-  const onPlusBasket = (obj) => {
-    if (cardBasket.find((el) => el.imageUrl.includes(obj.imageUrl) === true)) {
-    } else {
-      axios.post("https://19bd238effe8a2ff.mokky.ru/carts", obj);
-      setCardBasket((prev) => [...prev, obj]);
+  const onPlusBasket = async (obj) => {
+    try {
+      if (getCart.find((el) => el.imageUrl.includes(obj.imageUrl) === true)) {
+      } else {
+        await axios.post("https://19bd238effe8a2ff.mokky.ru/carts", obj);
+        setGetCart((prev) => [...prev, obj]);
+      }
+    } catch (error) {
+      alert(`Не удалось добавить в корзину`)
     }
   };
 
-  const bodyOvfOff = () => {
-    setBasketOpen(true);
-    document.querySelector("body").classList.add("ovf");
+  const cardDel = async (obj) => {
+    try {
+      await axios.delete(`https://19bd238effe8a2ff.mokky.ru/carts/${obj.id}`);
+
+      setGetCart((prev) => {
+        return prev.filter((i) => {
+          return obj.imageUrl !== i.imageUrl;
+        });
+      });
+    } catch (error) {
+      alert(`Не удалось удалить из корзины`)
+    }
   };
 
-  const delPlus = () => {};
+  const onPlusFavorite = async (obj) => {
+    try {
+      if (
+        getFavorite.find((el) => el.imageUrl.includes(obj.imageUrl) === true)
+      ) {
+      } else {
+        await axios.post("https://19bd238effe8a2ff.mokky.ru/favorite", obj);
+        setGetFavorite((prev) => [...prev, obj]);
+      }
+    } catch (error) {
+      alert(`Не удалось добавить в избранное`)
+    }
+  };
 
-  const cardDel = (obj) => {
-    delPlus(obj);
-    setTimeout(() => {
-      axios.delete(`https://19bd238effe8a2ff.mokky.ru/carts/${obj.id}`);
-    }, 1000);
-    setCardBasket((prev) => {
-      return prev.filter((i) => {
-        return obj.imageUrl !== i.imageUrl;
+  const onDelFavorite = async (obj) => {
+    try {
+      await axios.delete(
+        `https://19bd238effe8a2ff.mokky.ru/favorite/${obj.id}`
+      );
+
+      setGetFavorite((prev) => {
+        return prev.filter((i) => {
+          return obj.imageUrl !== i.imageUrl;
+        });
       });
-    });
+    } catch (error) {
+      alert(`Не удалось удалить из избранного`)
+    }
+  };
+
+  const onClickBasket = () => {
+    setCartOn(!cartOn);
+    document.querySelector("body").classList.toggle("ovf");
   };
 
   const onFavoriteClick = () => {
-    setOnFavorite(!onFavorite);
+    setFavoriteOn(!favoriteOn);
   };
 
-  const onPlusFavorites = (obj) => {
-    if (
-      onPlusFavorite.find((el) => el.imageUrl.includes(obj.imageUrl) === true)
-    ) {
-    } else {
-      axios.post("https://19bd238effe8a2ff.mokky.ru/favorite", obj);
-      setOnPlusFavorite((prev) => [...prev, obj]);
-    }
+  const price = () => {
+    setPriceCart();
   };
-
-  const onDelFavorite = (obj) => {
-    delPlus(obj);
-    setTimeout(() => {
-      axios.delete(`https://19bd238effe8a2ff.mokky.ru/favorite/${obj.id}`);
-    }, 1000);
-    setOnPlusFavorite((prev) => {
-      return prev.filter((i) => {
-        return obj.imageUrl !== i.imageUrl;
-      });
-    });
-  };
-
-  
 
   return (
     <div className="wrap">
-      <Header onClickBasket={bodyOvfOff} onFavoriteClick={onFavoriteClick} />
-      <Drawer
-        delPlus={delPlus}
-        cardDel={cardDel}
-        cardBasket={cardBasket}
-        basketOpen={basketOpen}
-        basketClouse={bodyOvf}
-      />
-      {onFavorite ? null : (
-        <Content
-          filterBuscet={cardBasket}
-          onPlus={onPlusBasket}
-          onPlusFavorite={onPlusFavorites}
-          isFavorite={onPlusFavorite}
+      <Header
+        priceCart={priceCart}
+        onClickBasket={onClickBasket}
+        onFavoriteClick={onFavoriteClick}
+      ></Header>
+      {cartOn && (
+        <Drawer
+          cartOn={cartOn}
+          setCartOn={setCartOn}
+          getCart={getCart}
+          cardDel={cardDel}
         />
       )}
-
-        <Routes>
-          <Route path="/favorits" element={<h3>fgadsfsdfdsf</h3>}/>
-        </Routes>
-
-      {onFavorite ? (
+      {favoriteOn ? (
         <Favorite
           onDelFavorite={onDelFavorite}
+          setGetFavorite={setGetFavorite}
+          getFavorite={getFavorite}
+          getCart={getCart}
           onPlusBasket={onPlusBasket}
-          onPlusFavorites={onPlusFavorite}
         />
-      ) : null}
+      ) : (
+        <Content
+          onDelFavorite={onDelFavorite}
+          onPlusFavorite={onPlusFavorite}
+          getFavorite={getFavorite}
+          getItems={getItems}
+          getCart={getCart}
+          onPlusBasket={onPlusBasket}
+          setButtonPlusActive={setButtonPlusActive}
+          buttonPlusActive={buttonPlusActive}
+        />
+      )}
     </div>
   );
 }

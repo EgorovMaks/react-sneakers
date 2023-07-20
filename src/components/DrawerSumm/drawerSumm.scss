@@ -1,0 +1,29 @@
+.drawerSumm {
+  margin-top: 30px;
+  color: #000;
+  .drawerSummWrap {
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+    margin-bottom: 23px;
+  }
+  .summBorder {
+    width: 100%;
+    border-bottom: 1px dashed #dfdfdf;
+    margin-left: 8px;
+    margin-right: 8px;
+    transform: translateY(-2px);
+  }
+  .summTitle {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .summPrice {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
