@@ -1,7 +1,6 @@
 import ButtonFavorite from "../ButtonFavorite/ButtonFavorite";
 import "./card.scss";
 import ButtonCart from "../ButtonCart/ButtonCart";
-import { useState } from "react";
 
 function Card({
   imageUrl,

@@ -18,7 +18,7 @@ function Favorite({
   const buildCardsFavorite = () => {
     return getFavorite.map((obj) => (
       <Card
-        key={obj.imageUrl}
+        key={obj.imageUrl+100}
         onDelFavorite={onDelFavoriteCondition}
         getFavorite={getFavorite}
         getCart={getCart}
