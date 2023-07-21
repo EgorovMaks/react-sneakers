@@ -81,7 +81,7 @@ function App(props) {
     } catch (error) {
       alert(`Не удалось добавить в избранное`);
     }
-  };
+  }; 
 
   const onDelFavorite = async (obj) => {
     obj.id = getFavorite
