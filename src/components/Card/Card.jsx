@@ -1,6 +1,7 @@
 import ButtonFavorite from "../ButtonFavorite/ButtonFavorite";
-import "./card.scss";
+import style from "./card.module.scss";
 import ButtonCart from "../ButtonCart/ButtonCart";
+import Loader from "../Loader/Loader"
 
 function Card({
   imageUrl,
@@ -12,15 +13,18 @@ function Card({
   buttonPlusActive,
   getFavorite,
   onPlusFavorite,
-  onDelFavorite
+  onDelFavorite,
+  onLoading,
 }) {
+
+  
   const conditionCard = () => {
     onPlusBusket({ title, price, imageUrl, id });
   };
 
   const conditionFavorite = () => {
     if (isFavorite() === true) {
-      onDelFavorite({id, imageUrl})
+      onDelFavorite({ id, imageUrl });
     } else {
       onPlusFavorite({ title, price, imageUrl, id });
     }
@@ -41,28 +45,39 @@ function Card({
   };
 
   return (
-    <div className="card">
-      <ButtonFavorite
-        isFavorite={isFavorite}
-        onPlusFavorite={conditionFavorite}
-      />
-      <img
-        className="image"
-        src={`./img/sneakers/card-sneakers-${imageUrl}.jpg`}
-        alt="Кросовки"
-      />
-      <p className="cardTitle">{title}</p>
-      <div className="cardBottomWrap">
-        <div className="summWrap">
-          <span className="summTitle">ЦЕНА:</span>
-          <span className="price">{price} руб.</span>
-        </div>
-        <ButtonCart
-          isCard={isCard}
-          onPlusBusket={conditionCard}
-          buttonPlusActive={buttonPlusActive}
-        />
-      </div>
+    <div className={style.card}>
+      {onLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {onPlusBusket&&<ButtonFavorite
+            isFavorite={isFavorite}
+            onPlusFavorite={conditionFavorite}
+          />}
+          
+          <img
+            className={style.image}
+            src={`./img/sneakers/card-sneakers-${imageUrl}.jpg`}
+            alt="Кросовки"
+          />
+          <p className={style.cardTitle}>{title}</p>
+          <div className={style.cardBottomWrap}>
+            <div className={style.summWrap}>
+              <span className={style.summTitle}>ЦЕНА:</span>
+              <span className={style.price}>
+                {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} руб.
+              </span>
+            </div>
+            {onPlusBusket && (
+              <ButtonCart
+                isCard={isCard}
+                onPlusBusket={conditionCard}
+                buttonPlusActive={buttonPlusActive}
+              />
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

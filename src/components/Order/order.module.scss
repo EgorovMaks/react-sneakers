@@ -1,0 +1,109 @@
+.content {
+  padding: 40px;
+  min-height: 100vh;
+  .title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 30px;
+  }
+  .text{
+
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 39px;
+  }
+  
+
+  .sneakers {
+    display: grid;
+    justify-content: space-between;
+    row-gap: 30px;
+    @media (min-width: 1701px) {
+      grid-template-columns: repeat(7, 210px);
+    }
+    @media (max-width: 1700px) and (min-width: 1501px) {
+      grid-template-columns: repeat(6, 210px);
+    }
+    @media (max-width: 1500px) and (min-width: 1301px) {
+      grid-template-columns: repeat(5, 210px);
+    }
+    @media (max-width: 1300px) and (min-width: 1001px) {
+      grid-template-columns: repeat(4, 210px);
+    }
+    @media (max-width: 1000px) and (min-width: 801px) {
+      grid-template-columns: repeat(3, 210px);
+    }
+    @media (max-width: 800px) and (min-width: 581px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 580px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+.searchBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      width: 250px;
+      height: 45px;
+      border: 2px solid #e4e4e4;
+      border-radius: 10px;
+      padding: 15px 15px 15px 18px;
+      transition: border 0.4s ease;
+      img {
+        position: absolute;
+        top: 10.5px;
+        right: 10px;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+        width: 20px;
+        height: 20px;
+        &:hover {
+          transform: rotate(135deg);
+        }
+      }
+
+      svg {
+        justify-content: center;
+        path {
+          transition: stroke 0.4s ease;
+        }
+      }
+      input {
+        justify-content: start;
+        width: 180px;
+        padding-right: 40px;
+        height: 40px;
+        border: none;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        margin-right: 4px;
+      }
+      input::placeholder {
+        border: none;
+      }
+    }
+    .searchBox:hover,
+    .searchBox:active,
+    .searchBox:focus {
+      border: 2px solid #3cc755;
+    }
+    .searchBox:hover svg path,
+    .searchBox:active svg path,
+    .searchBox:focus svg path {
+      stroke: #3cc755;
+    }
+    .wrapSearch{
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+      

@@ -24,7 +24,7 @@ function CardBasket({
       <div>
         <span className={style.cardBasketName}>{title}</span>
         <span>
-          <b>{price} руб.</b>
+          <b>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} руб.</b>
         </span>
       </div>
       <button onClick={delCardCart} className={styleBtnClouse.buttonClouse}>

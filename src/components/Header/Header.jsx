@@ -3,7 +3,7 @@ import Cart from "../SvgComponents/Cart";
 import Heart from '../SvgComponents/Heart.jsx'
 import User from "../SvgComponents/User.jsx";
 
-function Header({ onClickBasket, onFavoriteClick, priceCart }) {
+function Header({ onClickBasket, onFavoriteClick, priceCart, orderOn }) {
   return (
     <header>
       <div className={style.headerLeft}>
@@ -23,7 +23,9 @@ function Header({ onClickBasket, onFavoriteClick, priceCart }) {
         <li className={style.headerBasket}>
           <button onClick={onClickBasket}>
             <Cart />
-            <span>{`${priceCart} руб.`}</span>
+            <span>{`${priceCart
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, " ")} руб.`}</span>
           </button>
         </li>
         <li>
@@ -32,7 +34,9 @@ function Header({ onClickBasket, onFavoriteClick, priceCart }) {
           </button>
         </li>
         <li>
-          <User />
+          <button onClick={orderOn}>
+            <User />
+          </button>
         </li>
       </ul>
     </header>

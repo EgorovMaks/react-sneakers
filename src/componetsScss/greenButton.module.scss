@@ -2,6 +2,8 @@
   display: block;
   position: relative;
   width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 18px;
   padding-bottom: 18px;
   background: #9dd558;
@@ -10,6 +12,7 @@
   color: #fff;
   text-align: center;
   transition: background 0.2s ease-in-out;
+  
   span {
     position: absolute;
     right: 33px;

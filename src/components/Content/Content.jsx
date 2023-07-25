@@ -12,7 +12,18 @@ function Content({
   getFavorite,
   onPlusFavorite,
   onDelFavorite,
+  onLoading,
 }) {
+  const fakeItems = [
+    { key: 1 },
+    { key: 2 },
+    { key: 3 },
+    { key: 4 },
+    { key: 5 },
+    { key: 6 },
+    { key: 7 },
+    { key: 8 },
+  ];
   const [searchValue, setSearchValue] = useState("");
 
   const onPlusBusketCondition = (obj) => {
@@ -27,29 +38,31 @@ function Content({
   };
 
   const buildCards = () => {
-    return getItems
-      .filter((i) => i.title.toLowerCase().includes(searchValue.toLowerCase()))
-      .map((obj) => (
-        <Card
-          onDelFavorite={onDelFavoriteCondition}
-          onPlusFavorite={onPlusFavoriteCondition}
-          getFavorite={getFavorite}
-          buttonPlusActive={buttonPlusActive}
-          setButtonPlusActive={setButtonPlusActive}
-          getCart={getCart}
-          getItems={getItems}
-          onPlusBusket={onPlusBusketCondition}
-          {...obj}
-        />
-      ));
+    return (
+      onLoading
+        ? fakeItems
+        : getItems.filter((i) =>
+            i.title.toLowerCase().includes(searchValue.toLowerCase())
+          )
+    ).map((obj) => (
+      <Card
+        onDelFavorite={onDelFavoriteCondition}
+        onPlusFavorite={onPlusFavoriteCondition}
+        getFavorite={getFavorite}
+        buttonPlusActive={buttonPlusActive}
+        setButtonPlusActive={setButtonPlusActive}
+        getCart={getCart}
+        getItems={getItems}
+        onPlusBusket={onPlusBusketCondition}
+        onLoading={onLoading}
+        {...obj}
+      />
+    ));
   };
 
   return (
     <section className={style.content}>
-      <SearhBox
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      <SearhBox searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className={style.sneakers}>{buildCards()}</div>
     </section>
   );

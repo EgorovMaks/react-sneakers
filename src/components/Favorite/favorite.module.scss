@@ -25,6 +25,9 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+.favoriteCenter{
+  display: block;
+}
 
 .favoriteWrap {
   padding: 40px;
@@ -35,4 +38,8 @@
   font-size: 32px;
   line-height: 39px;
   margin-bottom: 47px;
+}
+
+.favoriteWrapCenter{
+
 }

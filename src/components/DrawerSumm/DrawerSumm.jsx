@@ -1,20 +1,29 @@
-import '../../componetsScss/greenButton.scss'
-import './drawerSumm.scss'
+import  styleBtn from'../../componetsScss/greenButton.module.scss'
+import style from './drawerSumm.module.scss'
 
-function DrawerSumm() {
+function DrawerSumm({ placeAnOrder, priceCart }) {
   return (
-    <div className="drawerSumm">
-      <div className="drawerSummWrap">
-        <span className="summTitle">Итого:</span>
-        <span className="summBorder"></span>
-        <span className="summPrice">21 498 руб.</span>
+    <div className={style.drawerSumm}>
+      <div className={style.drawerSummWrap}>
+        <span className={style.summTitle}>Итого:</span>
+        <span className={style.summBorder}></span>
+        <span className={style.summPrice}>
+          {priceCart.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} руб.
+        </span>
       </div>
-      <div className="drawerSummWrap">
-        <span className="summTitle">Налог 5%</span>
-        <span className="summBorder"></span>
-        <span className="summPrice">1074 руб.</span>
+      <div className={style.drawerSummWrap}>
+        <span className={style.summTitle}>Налог 5%</span>
+        <span className={style.summBorder}></span>
+        <span className={style.summPrice}>
+          {Math.round((priceCart / 100) * 5)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+          руб.
+        </span>
       </div>
-      <button className="greenButton" >Оформить заказ</button>
+      <button onClick={placeAnOrder} className={styleBtn.greenButton}>
+        Оформить заказ
+      </button>
     </div>
   );
 }
