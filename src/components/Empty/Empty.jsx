@@ -20,7 +20,10 @@ const Empty = ({ imageUrl, title, btnClick, alt, text }) => {
           Вернуться назад
         </button>
       ) : (
-        <Link to="/" className={`${styleBtn.greenButton} ${style.btn}`}>
+        <Link
+          to="/react-sneakers/"
+          className={`${styleBtn.greenButton} ${style.btn}`}
+        >
           Вернуться назад
         </Link>
       )}
