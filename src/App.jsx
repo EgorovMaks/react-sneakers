@@ -134,7 +134,7 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
-      <Route path="/" exact>
+      <Route path="" exact>
         <Home
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
@@ -148,7 +148,7 @@ function App(props) {
         />
       </Route>
 
-      <Route path="/favorites">
+      <Route path="favorites">
         <Favorites
           onDelFavorite={onDelFavorite}
           setGetFavorite={setGetFavorite}
@@ -157,7 +157,7 @@ function App(props) {
           onPlusBasket={onPlusBasket}
         />
       </Route>
-      <Route path="/orders">
+      <Route path="orders">
         <Orders
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}

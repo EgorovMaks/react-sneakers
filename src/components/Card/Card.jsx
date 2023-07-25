@@ -50,14 +50,16 @@ function Card({
         <Loader />
       ) : (
         <>
-          {onPlusBusket&&<ButtonFavorite
-            isFavorite={isFavorite}
-            onPlusFavorite={conditionFavorite}
-          />}
-          
+          {onPlusBusket && (
+            <ButtonFavorite
+              isFavorite={isFavorite}
+              onPlusFavorite={conditionFavorite}
+            />
+          )}
+
           <img
             className={style.image}
-            src={`./img/sneakers/card-sneakers-${imageUrl}.jpg`}
+            src={`https://raw.githubusercontent.com/EgorovMaks/react-sneakers/gh-pages/img/sneakers/card-sneakers-${imageUrl}.jpg`}
             alt="Кросовки"
           />
           <p className={style.cardTitle}>{title}</p>
