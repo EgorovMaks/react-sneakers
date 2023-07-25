@@ -17,13 +17,8 @@
     display: grid;
     justify-content: space-between;
     row-gap: 30px;
-    @media (min-width: 1701px) {
-      grid-template-columns: repeat(7, 210px);
-    }
-    @media (max-width: 1700px) and (min-width: 1501px) {
-      grid-template-columns: repeat(6, 210px);
-    }
-    @media (max-width: 1500px) and (min-width: 1301px) {
+    
+    @media (min-width: 1301px) {
       grid-template-columns: repeat(5, 210px);
     }
     @media (max-width: 1300px) and (min-width: 1001px) {
