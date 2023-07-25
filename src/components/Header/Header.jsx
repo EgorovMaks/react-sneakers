@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 function Header({ onClickBasket, priceCart }) {
   return (
     <header>
-      <Link to="">
+      <Link to="https://egorovmaks.github.io/react-sneakers/">
         <div className={style.headerLeft}>
           <img
             className={style.logo}
