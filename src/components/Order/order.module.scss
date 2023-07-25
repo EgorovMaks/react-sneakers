@@ -24,13 +24,7 @@
     display: grid;
     justify-content: space-between;
     row-gap: 30px;
-    @media (min-width: 1701px) {
-      grid-template-columns: repeat(7, 210px);
-    }
-    @media (max-width: 1700px) and (min-width: 1501px) {
-      grid-template-columns: repeat(6, 210px);
-    }
-    @media (max-width: 1500px) and (min-width: 1301px) {
+    @media (min-width: 1301px) {
       grid-template-columns: repeat(5, 210px);
     }
     @media (max-width: 1300px) and (min-width: 1001px) {
@@ -39,12 +33,12 @@
     @media (max-width: 1000px) and (min-width: 801px) {
       grid-template-columns: repeat(3, 210px);
     }
-    @media (max-width: 800px) and (min-width: 581px) {
+    @media (max-width: 800px) and (min-width: 365px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    @media (max-width: 580px) {
+    @media (max-width: 364px) {
       grid-template-columns: repeat(1, 1fr);
-    }
+  }
   }
 }
 .searchBox {
