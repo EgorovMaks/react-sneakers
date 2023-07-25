@@ -9,6 +9,10 @@
   background: transparent;
   border-radius: 8px;
   transition: border .3s ease-in-out, background .3s ease-in-out;
+    @media (max-width: 644px) {
+      top: 17px;
+      left: 17px;
+  }
   svg {
     position: absolute;
     top: 50%;

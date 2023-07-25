@@ -25,6 +25,7 @@ function Drawer({
   };
 
   const placeAnOrder = async () => {
+    setIsPlaceAnOrder(true);
     const { data } = await axios.post(
       `https://19bd238effe8a2ff.mokky.ru/porter`,
       { items: { getCart } }
@@ -57,7 +58,11 @@ function Drawer({
   };
 
   return (
-    <section className={`${style.drawer} ${style.drawerActive}`}>
+    <section
+      className={
+        cartOn ? `${style.drawer} ${style.drawerActive}` : `${style.drawer} `
+      }
+    >
       <div className={style.drawerCart}>
         <div className={style.drawerTitle}>
           <p className={style.title}>Корзина</p>

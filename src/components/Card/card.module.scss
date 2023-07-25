@@ -1,4 +1,5 @@
 .card {
+  margin: 0 auto;
   position: relative;
   width: 210px;
   height: 260px;
@@ -6,6 +7,11 @@
   border: 1px solid #f3f3f3;
   background: #fff;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  @media (max-width: 644px) {
+    width: 160px;
+    height: 226px;
+    border-radius: 20px;
+  }
   &:hover {
     box-shadow: 0px 14px 30px 0px rgba(0, 0, 0, 0.05);
     transform: translateY(-5px);
@@ -16,6 +22,11 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 14px;
+
+    @media (max-width: 644px) {
+      width: 109px;
+      height: auto;
+    }
   }
   .cardTitle {
     max-width: 154px;
@@ -23,6 +34,11 @@
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 14px;
+    @media (max-width: 644px) {
+      font-size: 12px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 
   .cardBottomWrap {
@@ -30,6 +46,10 @@
     justify-content: space-between;
     max-width: 154px;
     margin: 0 auto;
+    @media (max-width: 644px) {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
   .summTitle {
     display: block;
@@ -44,5 +64,8 @@
     color: #000;
     font-size: 16px;
     font-weight: 700;
+    @media (max-width: 644px) {
+      font-size: 14px;
+    }
   }
 }

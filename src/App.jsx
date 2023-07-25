@@ -111,7 +111,10 @@ function App(props) {
 
   const onClickBasket = () => {
     setCartOn(!cartOn);
+    setTimeout(()=>{
+
     document.querySelector("body").classList.toggle("ovf");
+    },300)
   };
 
   
@@ -120,22 +123,17 @@ function App(props) {
 
   return (
     <div className="wrap">
-      <Header
+      <Header priceCart={priceCart} onClickBasket={onClickBasket}></Header>
+      <Drawer
+        setPriceCart={setPriceCart}
+        summ={summ}
         priceCart={priceCart}
-        onClickBasket={onClickBasket}
-      ></Header>
-      {cartOn && (
-        <Drawer
-          setPriceCart={setPriceCart}
-          summ={summ}
-          priceCart={priceCart}
-          cartOn={cartOn}
-          setCartOn={setCartOn}
-          getCart={getCart}
-          cardDel={cardDel}
-          setGetCart={setGetCart}
-        />
-      )}
+        cartOn={cartOn}
+        setCartOn={setCartOn}
+        getCart={getCart}
+        cardDel={cardDel}
+        setGetCart={setGetCart}
+      />
       <Route path="/" exact>
         <Home
           onDelFavorite={onDelFavorite}

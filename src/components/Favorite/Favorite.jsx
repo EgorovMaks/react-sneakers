@@ -2,7 +2,6 @@ import React from "react";
 import Card from "../Card/Card";
 import style from "./favorite.module.scss";
 import Empty from "../Empty/Empty";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Favorite({
   getFavorite,

@@ -29,6 +29,9 @@
     background: #fff;
     opacity: 1;
     z-index: 3;
+    @media (max-width: 390px) {
+      width: auto;
+  }
   }
 
   .drawerTitle {
