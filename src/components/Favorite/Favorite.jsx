@@ -2,13 +2,13 @@ import React from "react";
 import Card from "../Card/Card";
 import style from "./favorite.module.scss";
 import Empty from "../Empty/Empty";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Favorite({
   getFavorite,
   getCart,
   onPlusBasket,
   onDelFavorite,
-  setFavoriteOn,
 }) {
   const onPlusBusketCondition = (obj) => {
     onPlusBasket(obj);
@@ -16,6 +16,10 @@ function Favorite({
   const onDelFavoriteCondition = (obj) => {
     onDelFavorite(obj);
   };
+
+  
+
+
   const buildCardsFavorite = () => {
     return getFavorite.map((obj) => (
       <Card
@@ -45,7 +49,7 @@ function Favorite({
           <Empty
             title="Закладок нет :("
             text="Вы ничего не добавляли в закладки"
-            btnClick={() => setFavoriteOn(false)}
+            
             imageUrl={`./img/empty/favorite-image-empty.png`}
             alt={`Ничего нет`}
           />

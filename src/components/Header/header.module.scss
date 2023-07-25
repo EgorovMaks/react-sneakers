@@ -1,5 +1,7 @@
 header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
   justify-content: space-between;
   align-items: center;
   padding: 40px;
@@ -12,6 +14,7 @@ header {
     }
     h3 {
       text-transform: uppercase;
+      color: #000;
     }
     p {
       color: #9d9d9d;
@@ -25,7 +28,7 @@ header {
       display: flex;
       align-items: center;
     }
-    button{
+    a, button{
       border: none;
       background: none;
       display: flex;

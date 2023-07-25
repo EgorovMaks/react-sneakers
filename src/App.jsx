@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
-import Content from "./components/Content/Content";
 import axios from "axios";
 import Drawer from "./components/Drawer/Drawer";
-import Favorite from "./components/Favorite/Favorite";
-import Order from "./components/Order/Order";
+import { Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import Orders from "./pages/Orders"
 
 function App(props) {
   const [getItems, setGetItems] = useState([]);
@@ -12,10 +13,8 @@ function App(props) {
   const [getFavorite, setGetFavorite] = useState([]);
   const [cartOn, setCartOn] = useState(false);
   const [buttonPlusActive, setButtonPlusActive] = useState(false);
-  const [favoriteOn, setFavoriteOn] = useState(false);
   const [priceCart, setPriceCart] = useState(0);
   const [onLoading, setOnLoading] = useState(true);
-  const [orderOnOff, setOrderOnOff] = useState(false);
 
   useEffect(() => {
     async function fethData() {
@@ -115,21 +114,15 @@ function App(props) {
     document.querySelector("body").classList.toggle("ovf");
   };
 
-  const onFavoriteClick = () => {
-    setFavoriteOn(!favoriteOn);
-  };
+  
 
-  const orderOn = () => {
-    setOrderOnOff(!orderOnOff);
-  };
+  
 
   return (
     <div className="wrap">
       <Header
-        orderOn={orderOn}
         priceCart={priceCart}
         onClickBasket={onClickBasket}
-        onFavoriteClick={onFavoriteClick}
       ></Header>
       {cartOn && (
         <Drawer
@@ -143,8 +136,44 @@ function App(props) {
           setGetCart={setGetCart}
         />
       )}
-      {favoriteOn ? (
-        <Favorite
+      <Route path="/" exact>
+        <Home
+          onDelFavorite={onDelFavorite}
+          onPlusFavorite={onPlusFavorite}
+          getFavorite={getFavorite}
+          getItems={getItems}
+          getCart={getCart}
+          onPlusBasket={onPlusBasket}
+          setButtonPlusActive={setButtonPlusActive}
+          buttonPlusActive={buttonPlusActive}
+          onLoading={onLoading}
+        />
+      </Route>
+
+      <Route path="/favorites">
+        <Favorites
+          onDelFavorite={onDelFavorite}
+          setGetFavorite={setGetFavorite}
+          getFavorite={getFavorite}
+          getCart={getCart}
+          onPlusBasket={onPlusBasket}
+        />
+      </Route>
+      <Route path="/orders">
+        <Orders
+          onDelFavorite={onDelFavorite}
+          onPlusFavorite={onPlusFavorite}
+          getFavorite={getFavorite}
+          getItems={getItems}
+          getCart={getCart}
+          onPlusBasket={onPlusBasket}
+          setButtonPlusActive={setButtonPlusActive}
+          buttonPlusActive={buttonPlusActive}
+          onLoading={onLoading}
+        />
+      </Route>
+
+      {/* <Favorite
           setFavoriteOn={setFavoriteOn}
           onDelFavorite={onDelFavorite}
           setGetFavorite={setGetFavorite}
@@ -152,7 +181,7 @@ function App(props) {
           getCart={getCart}
           onPlusBasket={onPlusBasket}
         />
-      ) : orderOnOff ? (
+      
         <Content
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
@@ -164,7 +193,7 @@ function App(props) {
           buttonPlusActive={buttonPlusActive}
           onLoading={onLoading}
         />
-      ) : (
+      
         <Order
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
@@ -175,8 +204,7 @@ function App(props) {
           setButtonPlusActive={setButtonPlusActive}
           buttonPlusActive={buttonPlusActive}
           onLoading={onLoading}
-        />
-      )}
+        /> */}
     </div>
   );
 }

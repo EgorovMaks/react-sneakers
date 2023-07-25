@@ -4,7 +4,7 @@ import styleBtn from "../../componetsScss/greenButton.module.scss"
 import Card from "../Card/Card";
 import axios from "axios";
 
-function Content({
+function Order({
   getItems,
   getCart,
   setButtonPlusActive,
@@ -79,4 +79,4 @@ function Content({
   );
 }
 
-export default Content;
+export default Order;

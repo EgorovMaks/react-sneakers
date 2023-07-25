@@ -1,24 +1,27 @@
 import style from "./header.module.scss";
 import Cart from "../SvgComponents/Cart";
-import Heart from '../SvgComponents/Heart.jsx'
+import Heart from "../SvgComponents/Heart.jsx";
 import User from "../SvgComponents/User.jsx";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function Header({ onClickBasket, onFavoriteClick, priceCart, orderOn }) {
+function Header({ onClickBasket,  priceCart, }) {
   return (
     <header>
-      <div className={style.headerLeft}>
-        <img
-          className={style.logo}
-          width={40}
-          height={40}
-          src="./img/logo.png"
-          alt="Logo"
-        />
-        <div>
-          <h3>React sneakers</h3>
-          <p>Магазин лучших крocсовок</p>
+      <Link to="/">
+        <div className={style.headerLeft}>
+          <img
+            className={style.logo}
+            width={40}
+            height={40}
+            src="./img/logo.png"
+            alt="Logo"
+          />
+          <div>
+            <h3>React sneakers</h3>
+            <p>Магазин лучших крocсовок</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <ul className={style.headerRight}>
         <li className={style.headerBasket}>
           <button onClick={onClickBasket}>
@@ -29,14 +32,14 @@ function Header({ onClickBasket, onFavoriteClick, priceCart, orderOn }) {
           </button>
         </li>
         <li>
-          <button onClick={onFavoriteClick}>
+          <Link to="./favorites">
             <Heart />
-          </button>
+          </Link>
         </li>
         <li>
-          <button onClick={orderOn}>
+          <Link to="/orders">
             <User />
-          </button>
+          </Link>
         </li>
       </ul>
     </header>
