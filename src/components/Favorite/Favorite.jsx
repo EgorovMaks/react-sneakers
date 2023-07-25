@@ -48,8 +48,7 @@ function Favorite({
           <Empty
             title="Закладок нет :("
             text="Вы ничего не добавляли в закладки"
-            
-            imageUrl={`./img/empty/favorite-image-empty.png`}
+            imageUrl={`https://raw.githubusercontent.com/EgorovMaks/react-sneakers/gh-pages/img/empty/favorite-image-empty.png`}
             alt={`Ничего нет`}
           />
         )}

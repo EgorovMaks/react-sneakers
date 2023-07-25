@@ -80,7 +80,7 @@ function Drawer({
               <Empty
                 title={`Заказ оформлен!`}
                 text={`Ваш заказ #${orderId} скоро будет передан курьерской доставке`}
-                imageUrl={`./img/empty/order-image-empty.png`}
+                imageUrl={`https://raw.githubusercontent.com/EgorovMaks/react-sneakers/gh-pages/img/empty/cart-image-empty.png`}
                 btnClick={() => {
                   setCartOn(false);
                   document.querySelector("body").classList.toggle("ovf");
