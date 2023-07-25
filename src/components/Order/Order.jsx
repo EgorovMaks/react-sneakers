@@ -43,7 +43,8 @@ function Order({
         setButtonPlusActive={setButtonPlusActive}
         getCart={getCart}
         getItems={getItems}
-        key={obj.imageUrl}
+        key={obj.imageUrl} 
+        
         {...obj}
       />
     ));

@@ -1,5 +1,6 @@
 import React from "react";
 import Favorite from "../components/Favorite/Favorite";
+import "../componetsScss/addBasket.module.scss"
 
 const Favorites = ({
   onDelFavorite,
