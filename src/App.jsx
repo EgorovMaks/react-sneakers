@@ -134,7 +134,7 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
-      <Route path="/" exact>
+      <Route path="/react-sneakers" exact>
         <Home
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
