@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 function Header({ onClickBasket, priceCart }) {
   return (
     <header>
-      <Link to="/">
+      <Link to="">
         <div className={style.headerLeft}>
           <img
             className={style.logo}
@@ -41,7 +41,7 @@ function Header({ onClickBasket, priceCart }) {
         </li>
         <li>
           <NavLink
-            to="/orders"
+            to="orders"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <User />
