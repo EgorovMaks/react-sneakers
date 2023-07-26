@@ -132,8 +132,7 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
-      <HashRouter>
-        <Route path="/#/" exact>
+        <Route path="/" exact>
           <Home
             onDelFavorite={onDelFavorite}
             onPlusFavorite={onPlusFavorite}
@@ -169,7 +168,6 @@ function App(props) {
             onLoading={onLoading}
           />
         </Route>
-      </HashRouter>
     </div>
   );
 }
