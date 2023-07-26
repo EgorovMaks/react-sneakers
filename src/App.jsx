@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import axios from "axios";
 import Drawer from "./components/Drawer/Drawer";
-import { Route } from "react-router-dom";
+import reactRouterDom, { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
-import Orders from "./pages/Orders"
+import Orders from "./pages/Orders";
 
 function App(props) {
   const [getItems, setGetItems] = useState([]);
@@ -113,15 +113,10 @@ function App(props) {
 
   const onClickBasket = () => {
     setCartOn(!cartOn);
-    setTimeout(()=>{
-
-    document.querySelector("body").classList.toggle("ovf");
-    },300)
+    setTimeout(() => {
+      document.querySelector("body").classList.toggle("ovf");
+    }, 300);
   };
-
-  
-
-  
 
   return (
     <div className="wrap">
@@ -136,7 +131,12 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
-      <Route path="/react-sneakers" exact>
+
+      <Route
+        history={reactRouterDom.browserHistory}
+        path="/react-sneakers"
+        exact
+      >
         <Home
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
@@ -150,7 +150,7 @@ function App(props) {
         />
       </Route>
 
-      <Route path="/favorites">
+      <Route path="/favorites" history={reactRouterDom.browserHistory}>
         <Favorites
           onDelFavorite={onDelFavorite}
           setGetFavorite={setGetFavorite}
@@ -159,7 +159,7 @@ function App(props) {
           onPlusBasket={onPlusBasket}
         />
       </Route>
-      <Route path="/orders">
+      <Route path="/orders" history={reactRouterDom.browserHistory}>
         <Orders
           onDelFavorite={onDelFavorite}
           onPlusFavorite={onPlusFavorite}
@@ -172,39 +172,6 @@ function App(props) {
           onLoading={onLoading}
         />
       </Route>
-
-      {/* <Favorite
-          setFavoriteOn={setFavoriteOn}
-          onDelFavorite={onDelFavorite}
-          setGetFavorite={setGetFavorite}
-          getFavorite={getFavorite}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-        />
-      
-        <Content
-          onDelFavorite={onDelFavorite}
-          onPlusFavorite={onPlusFavorite}
-          getFavorite={getFavorite}
-          getItems={getItems}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-          setButtonPlusActive={setButtonPlusActive}
-          buttonPlusActive={buttonPlusActive}
-          onLoading={onLoading}
-        />
-      
-        <Order
-          onDelFavorite={onDelFavorite}
-          onPlusFavorite={onPlusFavorite}
-          getFavorite={getFavorite}
-          getItems={getItems}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-          setButtonPlusActive={setButtonPlusActive}
-          buttonPlusActive={buttonPlusActive}
-          onLoading={onLoading}
-        /> */}
     </div>
   );
 }
