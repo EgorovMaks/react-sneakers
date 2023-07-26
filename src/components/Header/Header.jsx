@@ -34,7 +34,7 @@ function Header({ onClickBasket, priceCart }) {
         <li>
           <NavLink
             to="/favorites"
-            className={({ isActive }) => (isActive ? "" : "active")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <Heart />
           </NavLink>
@@ -42,7 +42,7 @@ function Header({ onClickBasket, priceCart }) {
         <li>
           <NavLink
             to="/orders"
-            className={({ isActive }) => (isActive ? "" : "active")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <User />
           </NavLink>
