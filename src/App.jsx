@@ -133,7 +133,7 @@ function App(props) {
         setGetCart={setGetCart}
       />
       <HashRouter>
-        <Route path="/react-sneakers" exact>
+        <Route path="/" exact>
           <Home
             onDelFavorite={onDelFavorite}
             onPlusFavorite={onPlusFavorite}
