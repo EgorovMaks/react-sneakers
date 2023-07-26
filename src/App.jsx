@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import axios from "axios";
 import Drawer from "./components/Drawer/Drawer";
-import reactRouterDom, { Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
+import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 function App(props) {
   const [getItems, setGetItems] = useState([]);
@@ -131,47 +132,44 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
+      <HashRouter>
+        <Route path="/react-sneakers" exact>
+          <Home
+            onDelFavorite={onDelFavorite}
+            onPlusFavorite={onPlusFavorite}
+            getFavorite={getFavorite}
+            getItems={getItems}
+            getCart={getCart}
+            onPlusBasket={onPlusBasket}
+            setButtonPlusActive={setButtonPlusActive}
+            buttonPlusActive={buttonPlusActive}
+            onLoading={onLoading}
+          />
+        </Route>
 
-      <Route
-        history={reactRouterDom.browserHistory}
-        path="/react-sneakers"
-        exact
-      >
-        <Home
-          onDelFavorite={onDelFavorite}
-          onPlusFavorite={onPlusFavorite}
-          getFavorite={getFavorite}
-          getItems={getItems}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-          setButtonPlusActive={setButtonPlusActive}
-          buttonPlusActive={buttonPlusActive}
-          onLoading={onLoading}
-        />
-      </Route>
-
-      <Route path="/favorites" history={reactRouterDom.browserHistory}>
-        <Favorites
-          onDelFavorite={onDelFavorite}
-          setGetFavorite={setGetFavorite}
-          getFavorite={getFavorite}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-        />
-      </Route>
-      <Route path="/orders" history={reactRouterDom.browserHistory}>
-        <Orders
-          onDelFavorite={onDelFavorite}
-          onPlusFavorite={onPlusFavorite}
-          getFavorite={getFavorite}
-          getItems={getItems}
-          getCart={getCart}
-          onPlusBasket={onPlusBasket}
-          setButtonPlusActive={setButtonPlusActive}
-          buttonPlusActive={buttonPlusActive}
-          onLoading={onLoading}
-        />
-      </Route>
+        <Route path="/favorites">
+          <Favorites
+            onDelFavorite={onDelFavorite}
+            setGetFavorite={setGetFavorite}
+            getFavorite={getFavorite}
+            getCart={getCart}
+            onPlusBasket={onPlusBasket}
+          />
+        </Route>
+        <Route path="/orders">
+          <Orders
+            onDelFavorite={onDelFavorite}
+            onPlusFavorite={onPlusFavorite}
+            getFavorite={getFavorite}
+            getItems={getItems}
+            getCart={getCart}
+            onPlusBasket={onPlusBasket}
+            setButtonPlusActive={setButtonPlusActive}
+            buttonPlusActive={buttonPlusActive}
+            onLoading={onLoading}
+          />
+        </Route>
+      </HashRouter>
     </div>
   );
 }
