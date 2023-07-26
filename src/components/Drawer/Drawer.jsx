@@ -27,13 +27,13 @@ function Drawer({
   const placeAnOrder = async () => {
     setIsPlaceAnOrder(true);
     const { data } = await axios.post(
-      `https://19bd238effe8a2ff.mokky.ru/porter`,
+      `https://cd918def291fc86a.mokky.dev/porter`,
       { items: { getCart } }
     );
     setOrderId(data.id);
     getCart.map(
       async (i) =>
-        await axios.delete(`https://19bd238effe8a2ff.mokky.ru/carts/${i.id}`)
+        await axios.delete(`https://cd918def291fc86a.mokky.dev/carts/${i.id}`)
     );
     setPriceCart("0");
     setGetCart([]);

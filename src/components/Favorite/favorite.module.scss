@@ -3,31 +3,34 @@
   justify-content: space-between;
   row-gap: 30px;
   @media (min-width: 1301px) {
-      grid-template-columns: repeat(5, 210px);
-    }
-    @media (max-width: 1300px) and (min-width: 1001px) {
-      grid-template-columns: repeat(4, 210px);
-    }
-    @media (max-width: 1000px) and (min-width: 801px) {
-      grid-template-columns: repeat(3, 210px);
-    }
-    @media (max-width: 800px) and (min-width: 365px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @media (max-width: 364px) {
-      grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(5, 210px);
+  }
+  @media (max-width: 1300px) and (min-width: 1001px) {
+    grid-template-columns: repeat(4, 210px);
+  }
+  @media (max-width: 1000px) and (min-width: 801px) {
+    grid-template-columns: repeat(3, 210px);
+  }
+  @media (max-width: 800px) and (min-width: 365px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 364px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
-.favoriteCenter{
+.favoriteCenter {
   display: block;
 }
 
 .favoriteWrap {
   height: 100vh;
   padding: 40px;
+  @media (max-width: 644px) {
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
-
-
 
 .favoriteTitle {
   font-weight: 700;
@@ -36,6 +39,5 @@
   margin-bottom: 47px;
 }
 
-.favoriteWrapCenter{
-
+.favoriteWrapCenter {
 }

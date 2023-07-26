@@ -13,7 +13,7 @@ function Header({ onClickBasket, priceCart }) {
             className={style.logo}
             width={40}
             height={40}
-            src="./img/logo.png"
+            src="https://raw.githubusercontent.com/EgorovMaks/react-sneakers/master/public/img/logo.png"
             alt="Logo"
           />
           <div>

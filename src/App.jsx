@@ -19,13 +19,13 @@ function App(props) {
   useEffect(() => {
     async function fethData() {
       const itemsResponse = await axios.get(
-        "https://19bd238effe8a2ff.mokky.ru/items"
+        "https://cd918def291fc86a.mokky.dev/items"
       );
       const itemsCart = await axios.get(
-        "https://19bd238effe8a2ff.mokky.ru/carts"
+        "https://cd918def291fc86a.mokky.dev/carts"
       );
       const itemsFavorite = await axios.get(
-        "https://19bd238effe8a2ff.mokky.ru/favorite"
+        "https://cd918def291fc86a.mokky.dev/favorite"
       );
       setOnLoading(false);
       setGetItems(itemsResponse.data);
@@ -42,7 +42,7 @@ function App(props) {
       if (getCart.find((el) => el.imageUrl === obj.imageUrl)) {
       } else {
         const { data } = await axios.post(
-          "https://19bd238effe8a2ff.mokky.ru/carts",
+          "https://cd918def291fc86a.mokky.dev/carts",
           obj
         );
         setGetCart((prev) => [...prev, data]);
@@ -55,13 +55,15 @@ function App(props) {
   };
 
   const summ = async () => {
-    const { data } = await axios.get("https://19bd238effe8a2ff.mokky.ru/carts");
+    const { data } = await axios.get(
+      "https://cd918def291fc86a.mokky.dev/carts"
+    );
     setPriceCart(data.reduce((i, el) => el.price + i, 0));
   };
 
   const cardDel = async (obj) => {
     try {
-      await axios.delete(`https://19bd238effe8a2ff.mokky.ru/carts/${obj.id}`);
+      await axios.delete(`https://cd918def291fc86a.mokky.dev/carts/${obj.id}`);
       // price();
       setGetCart((prev) => {
         return prev.filter((i) => {
@@ -81,7 +83,7 @@ function App(props) {
         console.log(obj);
       } else {
         const { data } = await axios.post(
-          "https://19bd238effe8a2ff.mokky.ru/favorite",
+          "https://cd918def291fc86a.mokky.dev/favorite",
           obj
         );
         setGetFavorite((prev) => [...prev, data]);
@@ -97,7 +99,7 @@ function App(props) {
       .map((e) => e.id);
     try {
       await axios.delete(
-        `https://19bd238effe8a2ff.mokky.ru/favorite/${obj.id}`
+        `https://cd918def291fc86a.mokky.dev/favorite/${obj.id}`
       );
       setGetFavorite((prev) => {
         return prev.filter((i) => {

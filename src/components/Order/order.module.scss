@@ -1,6 +1,11 @@
 .content {
   padding: 40px;
   min-height: 100vh;
+  @media (max-width: 644px) {
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   .title {
     font-weight: 700;
     font-size: 32px;
@@ -38,7 +43,7 @@
     }
     @media (max-width: 364px) {
       grid-template-columns: repeat(1, 1fr);
-  }
+    }
   }
 }
 .searchBox {
@@ -104,6 +109,6 @@
   align-items: center;
   margin-bottom: 50px;
   @media (max-width: 487px) {
-      gap: 10px;
+    gap: 10px;
   }
 }
