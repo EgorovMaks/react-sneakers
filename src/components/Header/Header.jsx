@@ -41,7 +41,7 @@ function Header({ onClickBasket, priceCart }) {
         </li>
         <li>
           <NavLink
-            to="/react-sneakers/#/orders"
+            to="/#/orders"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <User />
