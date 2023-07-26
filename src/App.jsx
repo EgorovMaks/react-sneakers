@@ -6,7 +6,10 @@ import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
-import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  BrowserRouter,
+  HashRouter,
+} from "react-router-dom/cjs/react-router-dom.min";
 
 function App(props) {
   const [getItems, setGetItems] = useState([]);
@@ -132,7 +135,7 @@ function App(props) {
         cardDel={cardDel}
         setGetCart={setGetCart}
       />
-      <HashRouter>
+      <BrowserRouter>
         <Route path="/" exact>
           <Home
             onDelFavorite={onDelFavorite}
@@ -169,7 +172,7 @@ function App(props) {
             onLoading={onLoading}
           />
         </Route>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
