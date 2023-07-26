@@ -2,7 +2,7 @@ import style from "./header.module.scss";
 import Cart from "../SvgComponents/Cart";
 import Heart from "../SvgComponents/Heart.jsx";
 import User from "../SvgComponents/User.jsx";
-import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Header({ onClickBasket, priceCart }) {
   return (
@@ -32,20 +32,20 @@ function Header({ onClickBasket, priceCart }) {
           </button>
         </li>
         <li>
-          <NavLink
+          <Link
             to="/react-sneakers/#/favorites"
             className={({ isActive }) => (isActive ? "" : "active")}
           >
             <Heart />
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink
+          <Link
             to="/#/orders"
             className={({ isActive }) => (isActive ? "" : "active")}
           >
             <User />
-          </NavLink>
+          </Link>
         </li>
       </ul>
     </header>
