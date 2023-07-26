@@ -63,6 +63,7 @@ function Drawer({
         cartOn ? `${style.drawer} ${style.drawerActive}` : `${style.drawer} `
       }
     >
+      <div onClick={clouseCart} className={style.block}></div>
       <div className={style.drawerCart}>
         <div className={style.drawerTitle}>
           <p className={style.title}>Корзина</p>

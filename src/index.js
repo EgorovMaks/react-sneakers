@@ -4,7 +4,6 @@ import "./reset.scss";
 import "./seting.scss";
 import "./index.scss";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
 import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
