@@ -21,7 +21,7 @@ const Empty = ({ imageUrl, title, btnClick, alt, text }) => {
         </button>
       ) : (
         <Link
-          to="/react-sneakers/"
+          to="/"
           className={`${styleBtn.greenButton} ${style.btn}`}
         >
           Вернуться назад
